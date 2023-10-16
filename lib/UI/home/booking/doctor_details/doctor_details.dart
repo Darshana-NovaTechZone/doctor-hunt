@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../color/colors.dart';
 import '../../../../widget/arrow_button.dart';
 import '../../../../widget/edit_button.dart';
+import '../../appointment/appointment.dart';
 import '../comment/comment.dart';
 
 class DoctorDetails extends StatefulWidget {
@@ -169,7 +170,18 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                               child: EditButton(
                                 fontSize: 13.sp,
                                 h: h / 15,
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.bottomToTop,
+                                        duration: Duration(milliseconds: 1000),
+                                        curve: Curves.easeIn,
+                                        child: Appointment(),
+                                        inheritTheme: true,
+                                        ctx: context),
+                                  );
+                                },
                                 text: "Book Now",
                                 w: w / 2,
                               ),

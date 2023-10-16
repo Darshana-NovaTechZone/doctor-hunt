@@ -16,6 +16,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List vedio = [
+    'assets/download.jpeg',
+    'assets/download.jpeg',
+    'assets/download (1).jpeg',
+    'assets/download (2).jpeg',
+    'assets/istockphoto-1470505351-170667a.webp'
+  ];
+  List ig = [
+    {'img': 'assets/icons8-dental-50.png', 'color': Colors.red},
+    {'img': 'assets/icons8-eye-48.png', 'color': const Color.fromARGB(255, 67, 244, 54)},
+    {'img': 'assets/icons8-stomach-50.png', 'color': const Color.fromARGB(255, 54, 190, 244)},
+    {'img': 'assets/icons8-body-64.png', 'color': const Color.fromARGB(255, 244, 54, 200)},
+    {'img': 'assets/icons8-heart-60.png', 'color': const Color.fromARGB(255, 244, 209, 54)},
+    {'img': 'assets/icons8-dental-50.png', 'color': const Color.fromARGB(255, 165, 54, 244)},
+  ];
+
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -162,14 +178,61 @@ class _HomeState extends State<Home> {
                   SizedBox(
                     height: h / 5,
                     child: ListView.builder(
+                      itemCount: vedio.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: h / 5.5,
-                            width: w / 4,
-                            decoration: BoxDecoration(color: red, borderRadius: BorderRadius.circular(15)),
+                          child: Stack(
+                            children: [
+                              Container(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    vedio[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                height: h / 5.5,
+                                width: w / 4,
+                                decoration: BoxDecoration(color: red, borderRadius: BorderRadius.circular(15)),
+                              ),
+                              Positioned(
+                                right: 0,
+                                left: 0,
+                                bottom: 0,
+                                top: 0,
+                                child: Icon(
+                                  Icons.play_circle_outlined,
+                                  color: white,
+                                  size: 30.sp,
+                                ),
+                              ),
+                              Positioned(
+                                right: 0,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 3),
+                                  color: red,
+                                  child: Row(children: [
+                                    Icon(
+                                      Icons.circle,
+                                      size: 8,
+                                      color: white,
+                                    ),
+                                    Text(
+                                      " Live ",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: white,
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 8.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                              )
+                            ],
                           ),
                         );
                       },
@@ -178,15 +241,31 @@ class _HomeState extends State<Home> {
                   SizedBox(
                     height: h / 7,
                     child: ListView.builder(
+                      itemCount: ig.length,
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
+                            alignment: Alignment.center,
                             height: h / 7,
                             width: w / 6,
-                            decoration: BoxDecoration(color: red, borderRadius: BorderRadius.circular(15)),
+                            child: SizedBox(
+                              height: h / 10,
+                              width: w / 10,
+                              child: Image.asset(
+                                ig[index]['img'],
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/Virtual_Background-Neutral.jpg'),
+                                    fit: BoxFit.cover,
+                                    colorFilter: ColorFilter.mode(ig[index]['color'].withOpacity(0.4), BlendMode.darken)),
+                                color: red,
+                                borderRadius: BorderRadius.circular(15)),
                           ),
                         );
                       },

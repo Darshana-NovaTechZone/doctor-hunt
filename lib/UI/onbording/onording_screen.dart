@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../widget/mainButton.dart';
+import '../login_and_register/login.dart';
 import 'onbord_1.dart';
 import 'onbord_2.dart';
 import 'onbord_3.dart';
@@ -65,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Navigation(),
+                            builder: (context) => login(),
                           ));
                     }
 
