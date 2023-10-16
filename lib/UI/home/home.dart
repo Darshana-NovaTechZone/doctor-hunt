@@ -1,6 +1,7 @@
 import 'package:dentit_hunt/UI/home/favourite_doctors/favourite_doctors.dart';
 import 'package:dentit_hunt/UI/home/popular_doctos/popular_doctors.dart';
 import 'package:dentit_hunt/color/colors.dart';
+import 'package:dentit_hunt/UI/home/Menu/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
@@ -98,9 +99,22 @@ class _HomeState extends State<Home> {
                                   ],
                                 ),
                               ),
-                              CircleAvatar(
-                                radius: 25.sp,
-                                backgroundImage: AssetImage('assets/unnamed.jpg'),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 1200),
+                                        child: Menu(loging: true),
+                                        inheritTheme: true,
+                                        ctx: context),
+                                  );
+                                },
+                                child: CircleAvatar(
+                                  radius: 25.sp,
+                                  backgroundImage: AssetImage('assets/unnamed.jpg'),
+                                ),
                               )
                             ],
                           ),

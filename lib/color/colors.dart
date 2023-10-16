@@ -18,3 +18,12 @@ Color colorliteGreen = Color(0xffeff8e2);
 Color colorgray = Color(0xffcecfc7);
 Color colorgliteBrown = Color(0xffc99da3);
 Color indigo = Color.fromARGB(255, 146, 38, 176);
+
+Color font_color = Color(0xff677294);
+Color Primary_font_color = Color(0xff333333);
+Color appred = Color(0xffFA002F);
+// Color Gradient green - 0EBE7E => 07D9AD
+Color grey_color = Color(0xffF2F2F4);
+Color gradient_dark_blue = Color(0xff6F7FA1);  
+
+// 536184
