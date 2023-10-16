@@ -30,6 +30,7 @@ class _NavigationState extends State<Navigation> {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       bottomNavigationBar: MoltenBottomNavigationBar(
         borderSize: 1,
         curve: Curves.bounceIn,

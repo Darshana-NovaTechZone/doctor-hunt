@@ -324,7 +324,7 @@ class _AppointmentState extends State<Appointment> {
             Navigator.push(
               context,
               PageTransition(
-                  type: PageTransitionType.rightToLeft,
+                  type: PageTransitionType.fade,
                   duration: Duration(milliseconds: 1000),
                   curve: Curves.easeIn,
                   child: Appointment2(),

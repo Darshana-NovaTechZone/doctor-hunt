@@ -22,13 +22,9 @@ class _FavoriteDoctorsState extends State<FavoriteDoctors> {
       extendBody: true,
       appBar: AppBar(
         title: Text('Favorite Doctors'),
-        leading: ArrowButton(
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
         backgroundColor: Colors.transparent,
       ),
+      drawer: Drawer(),
       body: Container(
         height: h,
         width: w,

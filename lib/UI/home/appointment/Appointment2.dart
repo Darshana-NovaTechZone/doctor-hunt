@@ -1,6 +1,7 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -78,132 +79,152 @@ class _Appointment2State extends State<Appointment2> {
               SizedBox(
                 height: 100,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  height: h / 2.8,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(color: white, borderRadius: BorderRadius.circular(20)),
-                  child: CalendarDatePicker2(
-                    config: config,
-                    value: _singleDatePickerValueWithDefaultValue,
-                    onValueChanged: (dates) => setState(() => _singleDatePickerValueWithDefaultValue = dates),
+              AnimationLimiter(
+                child: AnimationConfiguration.synchronized(
+                  child: SlideAnimation(
+                    duration: Duration(milliseconds: 800),
+                    verticalOffset: -400.0,
+                    // horizontalOffset: 200,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        height: h / 2.8,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(color: white, borderRadius: BorderRadius.circular(20)),
+                        child: CalendarDatePicker2(
+                          config: config,
+                          value: _singleDatePickerValueWithDefaultValue,
+                          onValueChanged: (dates) => setState(() => _singleDatePickerValueWithDefaultValue = dates),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
               Spacer(),
-              Container(
-                decoration: BoxDecoration(color: white, borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text(
-                        "Available Time",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'OpenSans',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: h / 9,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  availableTime = index;
-                                });
-                              },
-                              child: Container(
-                                  padding: EdgeInsets.all(12),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(shape: BoxShape.circle, color: font_green.withOpacity(availableTime == index ? 1 : 0.2)),
-                                  child: Text(
-                                    "12.00\nAM",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: availableTime == index ? white : black,
-                                      fontFamily: 'OpenSans',
-                                      fontSize: 8.sp,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )),
+              AnimationLimiter(
+                child: AnimationConfiguration.synchronized(
+                  child: SlideAnimation(
+                    duration: Duration(milliseconds: 800),
+                    verticalOffset: -100.0,
+                    child: Container(
+                      decoration:
+                          BoxDecoration(color: white, borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              "Available Time",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text(
-                        "Reminder Me Before",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'OpenSans',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: h / 9,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  remainderTime = index;
-                                });
+                          ),
+                          SizedBox(
+                            height: h / 9,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 10,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        availableTime = index;
+                                      });
+                                    },
+                                    child: Container(
+                                        padding: EdgeInsets.all(12),
+                                        alignment: Alignment.center,
+                                        decoration:
+                                            BoxDecoration(shape: BoxShape.circle, color: font_green.withOpacity(availableTime == index ? 1 : 0.2)),
+                                        child: Text(
+                                          "12.00\nAM",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: availableTime == index ? white : black,
+                                            fontFamily: 'OpenSans',
+                                            fontSize: 8.sp,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )),
+                                  ),
+                                );
                               },
-                              child: Container(
-                                  padding: EdgeInsets.all(12),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(shape: BoxShape.circle, color: font_green.withOpacity(remainderTime == index ? 1 : 0.2)),
-                                  child: Text(
-                                    "12.00\nAM",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: remainderTime == index ? white : black,
-                                      fontFamily: 'OpenSans',
-                                      fontSize: 8.sp,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )),
                             ),
-                          );
-                        },
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              "Reminder Me Before",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: h / 9,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 10,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        remainderTime = index;
+                                      });
+                                    },
+                                    child: Container(
+                                        padding: EdgeInsets.all(12),
+                                        alignment: Alignment.center,
+                                        decoration:
+                                            BoxDecoration(shape: BoxShape.circle, color: font_green.withOpacity(remainderTime == index ? 1 : 0.2)),
+                                        child: Text(
+                                          "12.00\nAM",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: remainderTime == index ? white : black,
+                                            fontFamily: 'OpenSans',
+                                            fontSize: 8.sp,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: MainButton(
+                              onTap: () {
+                                confirDialog();
+                              },
+                              text: "CONFIRM",
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: MainButton(
-                        onTap: () {
-                          confirDialog();
-                        },
-                        text: "CONFIRM",
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ]),
