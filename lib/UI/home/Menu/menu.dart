@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:dentit_hunt/UI/home/Menu/my_doctor/find_doctors.dart';
+import 'package:dentit_hunt/UI/home/Menu/my_doctor/my_doctors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -11,7 +11,9 @@ import 'package:sizer/sizer.dart';
 import '../../../color/colors.dart';
 import '../../../widget/arrow_button.dart';
 import '../../../widget/drawer_row.dart';
-import 'add_medicol_report/add_medicol_report.dart';
+import 'add_medicol_report/medicol_report.dart';
+import 'diagontics_tests/diagontics_test.dart';
+import 'help_center/help_center.dart';
 import 'medicine_order/medicine_order.dart';
 
 class Menu extends StatefulWidget {
@@ -106,127 +108,142 @@ class _MenuState extends State<Menu> {
               ),
             ),
             Spacer(),
-            Stack(
-              children: [
-                SizedBox(
-                  width: w,
-                  height: h / 1.8,
-                ),
-                Positioned(
-                  bottom: h / 8,
-                  top: h / 8,
-                  right: w / 3.9 - 30,
-                  child: Image.asset(
-                    'assets/05_Home screen-modified(1).png',
-                    width: w / 7,
-                    height: h / 2,
-                    fit: BoxFit.fill,
-                    color: gradient_dark_blue.withOpacity(0.5),
-                    colorBlendMode: BlendMode.darken,
+            SizedBox(
+              height: h * 0.7,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: w,
+                    height: h / 1.8,
                   ),
-                ),
-                Positioned(
-                  top: 0,
-                  bottom: 0,
-                  right: -10,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(50), bottomLeft: Radius.circular(20)),
+                  Positioned(
+                    bottom: h / 8,
+                    top: h / 8,
+                    right: w / 3.9 - 30,
                     child: Image.asset(
-                      'assets/05_Home screen-modified.png',
-                      width: w / 3.9,
-                      height: h / 1.7,
+                      'assets/05_Home screen-modified(1).png',
+                      width: w / 7,
+                      height: h / 2,
                       fit: BoxFit.fill,
-                      color: gradient_dark_blue.withOpacity(0.1),
+                      color: gradient_dark_blue.withOpacity(0.5),
                       colorBlendMode: BlendMode.darken,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 20,
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    right: -10,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(50), bottomLeft: Radius.circular(20)),
+                      child: Image.asset(
+                        'assets/05_Home screen-modified.png',
+                        width: w / 3.9,
+                        height: h / 1.7,
+                        fit: BoxFit.fill,
+                        color: gradient_dark_blue.withOpacity(0.1),
+                        colorBlendMode: BlendMode.darken,
                       ),
-                      DrawerRow(
-                          icon: Icons.person,
-                          text: 'My Doctor',
-                          on: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.easeIn,
-                                  child: MyDoctors(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          }),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(
-                          icon: Icons.receipt_long_outlined,
-                          text: 'Medical Records',
-                          on: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.easeIn,
-                                  child: AddMedicalReport(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          }),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(icon: Icons.payment_rounded, text: 'Payments', on: () {}),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(
-                          icon: Icons.outdoor_grill_rounded,
-                          text: 'Medicine Orders',
-                          on: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.easeIn,
-                                  child: MedicineOrder(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          }),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(icon: Icons.receipt_long_outlined, text: 'Test Bookings', on: () {}),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(icon: Icons.safety_check_outlined, text: 'Privacy & Policy', on: () {}),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(icon: Icons.help, text: 'Help Center', on: () {}),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      DrawerRow(icon: Icons.settings, text: 'Setting', on: () {}),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Spacer(),
+                        DrawerRow(
+                            icon: Icons.person,
+                            text: 'My Doctor',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeIn,
+                                    child: MyDoctors(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
+                        Spacer(),
+                        DrawerRow(
+                            icon: Icons.receipt_long_outlined,
+                            text: 'Medical Records',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeIn,
+                                    child: AddMedicalReport(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
+                        Spacer(),
+                        DrawerRow(icon: Icons.payment_rounded, text: 'Payments', on: () {}),
+                        Spacer(),
+                        DrawerRow(
+                            icon: Icons.outdoor_grill_rounded,
+                            text: 'Medicine Orders',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeIn,
+                                    child: MedicineOrder(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
+                        Spacer(),
+                        DrawerRow(
+                            icon: Icons.receipt_long_outlined,
+                            text: 'Test Bookings',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeIn,
+                                    child: DiagonsticsTests(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
+                        Spacer(),
+                        DrawerRow(icon: Icons.details, text: 'Patient Details', on: () {}),
+                        Spacer(),
+                        DrawerRow(icon: Icons.safety_check_outlined, text: 'Privacy & Policy', on: () {}),
+                        Spacer(),
+                        DrawerRow(
+                            icon: Icons.help,
+                            text: 'Help Center',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeIn,
+                                    child: HelpCenter(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
+                        Spacer(),
+                        DrawerRow(icon: Icons.settings, text: 'Setting', on: () {}),
+                        Spacer(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Spacer(),
             Padding(

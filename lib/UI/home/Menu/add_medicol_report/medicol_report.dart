@@ -7,17 +7,16 @@ import '../../../../color/colors.dart';
 import '../../../../widget/arrow_button.dart';
 import '../../../../widget/edit_button.dart';
 import '../../booking/select_time.dart';
-import 'enabel_gps/enable_gps.dart';
-import 'medicine_order_details.dart';
+import 'add_record/add_record.dart';
 
-class MedicineOrder extends StatefulWidget {
-  const MedicineOrder({super.key});
+class AddMedicalReport extends StatefulWidget {
+  const AddMedicalReport({super.key});
 
   @override
-  State<MedicineOrder> createState() => _MedicineOrderState();
+  State<AddMedicalReport> createState() => _AddMedicalReportState();
 }
 
-class _MedicineOrderState extends State<MedicineOrder> {
+class _AddMedicalReportState extends State<AddMedicalReport> {
   ScrollController _controller = ScrollController();
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class _MedicineOrderState extends State<MedicineOrder> {
       extendBody: true,
       appBar: AppBar(
         title: Text(
-          'Medicine Orders',
+          'Medical Records',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         leading: ArrowButton(
@@ -54,14 +53,14 @@ class _MedicineOrderState extends State<MedicineOrder> {
                 margin: EdgeInsets.all(30),
                 width: h / 4,
                 height: h / 4,
-                child: Image.asset('assets/icons8-report-100 (1).png'),
+                child: Image.asset('assets/report.png'),
                 decoration: BoxDecoration(
                   color: font_green.withOpacity(0.3),
                   shape: BoxShape.circle,
                 ),
               ),
               Text(
-                "No orders placed yet",
+                "Add a medical record.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'OpenSans',
@@ -73,7 +72,7 @@ class _MedicineOrderState extends State<MedicineOrder> {
                 height: 20,
               ),
               Text(
-                "Place your first order now",
+                "A details health history helps a doctor diagnose you better",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'OpenSans',
@@ -85,15 +84,15 @@ class _MedicineOrderState extends State<MedicineOrder> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MainButton(
-                  text: "Order medicines",
+                  text: "Add a record",
                   onTap: () {
                     Navigator.push(
                       context,
                       PageTransition(
-                          type: PageTransitionType.fade,
+                          type: PageTransitionType.rightToLeftWithFade,
                           duration: Duration(milliseconds: 800),
                           curve: Curves.easeIn,
-                          child: EnableGps(),
+                          child: AddMedicalReports(),
                           inheritTheme: true,
                           ctx: context),
                     );

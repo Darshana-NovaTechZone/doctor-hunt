@@ -1,23 +1,21 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:dentit_hunt/widget/mainButton.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../color/colors.dart';
-import '../../../../widget/arrow_button.dart';
-import '../../../../widget/edit_button.dart';
-import '../../booking/select_time.dart';
-import 'enabel_gps/enable_gps.dart';
-import 'medicine_order_details.dart';
+import '../../../../../color/colors.dart';
+import '../../../../../widget/arrow_button.dart';
+import '../medicine_order_details.dart';
 
-class MedicineOrder extends StatefulWidget {
-  const MedicineOrder({super.key});
+class EnableGps extends StatefulWidget {
+  const EnableGps({super.key});
 
   @override
-  State<MedicineOrder> createState() => _MedicineOrderState();
+  State<EnableGps> createState() => _EnableGpsState();
 }
 
-class _MedicineOrderState extends State<MedicineOrder> {
+class _EnableGpsState extends State<EnableGps> {
   ScrollController _controller = ScrollController();
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class _MedicineOrderState extends State<MedicineOrder> {
       extendBody: true,
       appBar: AppBar(
         title: Text(
-          'Medicine Orders',
+          'Enable Location Services',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         leading: ArrowButton(
@@ -54,14 +52,14 @@ class _MedicineOrderState extends State<MedicineOrder> {
                 margin: EdgeInsets.all(30),
                 width: h / 4,
                 height: h / 4,
-                child: Image.asset('assets/icons8-report-100 (1).png'),
+                child: Image.asset('assets/icons8-location-100.png'),
                 decoration: BoxDecoration(
                   color: font_green.withOpacity(0.3),
                   shape: BoxShape.circle,
                 ),
               ),
               Text(
-                "No orders placed yet",
+                "Location",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'OpenSans',
@@ -73,7 +71,7 @@ class _MedicineOrderState extends State<MedicineOrder> {
                 height: 20,
               ),
               Text(
-                "Place your first order now",
+                "Your location services are switched off.Please enable location.to help us serve better",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'OpenSans',
@@ -85,15 +83,23 @@ class _MedicineOrderState extends State<MedicineOrder> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MainButton(
-                  text: "Order medicines",
-                  onTap: () {
+                  text: "Enable Location",
+                  onTap: () async {
+                    AppSettings.openAppSettings();
+//                   var  _serviceEnabled = await location.serviceEnabled();
+// if (!_serviceEnabled) {
+//   _serviceEnabled = await location.requestService();
+//   if (!_serviceEnabled) {
+//     debugPrint('Location Denied once');
+//   }
+// }
                     Navigator.push(
                       context,
                       PageTransition(
                           type: PageTransitionType.fade,
                           duration: Duration(milliseconds: 800),
                           curve: Curves.easeIn,
-                          child: EnableGps(),
+                          child: MedicineOrderDetails(),
                           inheritTheme: true,
                           ctx: context),
                     );

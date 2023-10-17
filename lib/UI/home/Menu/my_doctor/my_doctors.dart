@@ -7,8 +7,6 @@ import '../../../../widget/arrow_button.dart';
 import '../../../../widget/edit_button.dart';
 import '../../booking/select_time.dart';
 
-
-
 class MyDoctors extends StatefulWidget {
   const MyDoctors({super.key});
 
@@ -26,7 +24,10 @@ class _MyDoctorsState extends State<MyDoctors> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('My Doctors'),
+        title: Text(
+          'My Doctors',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: ArrowButton(
           onTap: () {
             Navigator.pop(context);

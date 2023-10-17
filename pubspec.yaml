@@ -45,6 +45,10 @@ dependencies:
   table_calendar: ^3.0.9
   calendar_date_picker2: ^0.5.3
   flutter_otp_text_field: ^1.1.1
+  image_picker: ^1.0.4
+  file_picker: 
+  app_settings: 
+
   
 
  

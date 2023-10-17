@@ -7,15 +7,16 @@ import '../../../../color/colors.dart';
 import '../../../../widget/arrow_button.dart';
 import '../../../../widget/edit_button.dart';
 import '../../booking/select_time.dart';
+import 'diagontic_test_details.dart';
 
-class AddMedicalReport extends StatefulWidget {
-  const AddMedicalReport({super.key});
+class DiagonsticsTests extends StatefulWidget {
+  const DiagonsticsTests({super.key});
 
   @override
-  State<AddMedicalReport> createState() => _AddMedicalReportState();
+  State<DiagonsticsTests> createState() => _DiagonsticsTestsState();
 }
 
-class _AddMedicalReportState extends State<AddMedicalReport> {
+class _DiagonsticsTestsState extends State<DiagonsticsTests> {
   ScrollController _controller = ScrollController();
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,10 @@ class _AddMedicalReportState extends State<AddMedicalReport> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('Medical Records'),
+        title: Text(
+          'DiagonsticsTests',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: ArrowButton(
           onTap: () {
             Navigator.pop(context);
@@ -49,14 +53,14 @@ class _AddMedicalReportState extends State<AddMedicalReport> {
                 margin: EdgeInsets.all(30),
                 width: h / 4,
                 height: h / 4,
-                child: Image.asset('assets/report.png'),
+                child: Image.asset('assets/icons8-diagnostic-tool-100.png'),
                 decoration: BoxDecoration(
                   color: font_green.withOpacity(0.3),
                   shape: BoxShape.circle,
                 ),
               ),
               Text(
-                "Add a medical record.",
+                "You haven't booked any tested yet",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'OpenSans',
@@ -68,7 +72,7 @@ class _AddMedicalReportState extends State<AddMedicalReport> {
                 height: 20,
               ),
               Text(
-                "A details health history helps a doctor diagnose you better",
+                "Get started with you first health checkup",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'OpenSans',
@@ -80,8 +84,19 @@ class _AddMedicalReportState extends State<AddMedicalReport> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MainButton(
-                  text: "Add a record",
-                  onTap: () {},
+                  text: "Book Now",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 800),
+                          curve: Curves.easeIn,
+                          child: DiagnosticsTestsDetails(),
+                          inheritTheme: true,
+                          ctx: context),
+                    );
+                  },
                 ),
               ),
               Spacer(
