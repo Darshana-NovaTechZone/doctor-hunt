@@ -15,6 +15,7 @@ import 'add_medicol_report/medicol_report.dart';
 import 'diagontics_tests/diagontics_test.dart';
 import 'help_center/help_center.dart';
 import 'medicine_order/medicine_order.dart';
+import 'pation_details/pation_details.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key, required this.loging});
@@ -217,7 +218,21 @@ class _MenuState extends State<Menu> {
                               );
                             }),
                         Spacer(),
-                        DrawerRow(icon: Icons.details, text: 'Patient Details', on: () {}),
+                        DrawerRow(
+                            icon: Icons.details,
+                            text: 'Patient Details',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeIn,
+                                    child: PatientDetails(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
                         Spacer(),
                         DrawerRow(icon: Icons.safety_check_outlined, text: 'Privacy & Policy', on: () {}),
                         Spacer(),
