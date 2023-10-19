@@ -21,10 +21,13 @@ class _FavoriteDoctorsState extends State<FavoriteDoctors> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('Favorite Doctors'),
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Favorite Doctors',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.transparent,
       ),
-      drawer: Drawer(),
       body: Container(
         height: h,
         width: w,

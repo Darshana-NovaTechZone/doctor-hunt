@@ -41,7 +41,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       extendBody: true,
       appBar: AppBar(
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
-        title: Text('Doctor Details'),
+        title: Text(
+          'Doctor Details',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: ArrowButton(
           onTap: () {
             Navigator.pop(context);

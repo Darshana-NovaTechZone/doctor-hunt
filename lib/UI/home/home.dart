@@ -40,10 +40,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         extendBody: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-        ),
-        drawer: Drawer(),
         backgroundColor: const Color.fromARGB(31, 241, 236, 236),
         body: SingleChildScrollView(
           child: Column(

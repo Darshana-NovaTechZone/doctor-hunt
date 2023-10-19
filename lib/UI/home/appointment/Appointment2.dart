@@ -57,7 +57,10 @@ class _Appointment2State extends State<Appointment2> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('Appointment'),
+        title: Text(
+          'Appointment',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: ArrowButton(
           onTap: () {
             Navigator.pop(context);

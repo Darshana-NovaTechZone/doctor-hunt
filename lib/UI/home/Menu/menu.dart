@@ -16,6 +16,8 @@ import 'diagontics_tests/diagontics_test.dart';
 import 'help_center/help_center.dart';
 import 'medicine_order/medicine_order.dart';
 import 'pation_details/pation_details.dart';
+import 'privacy_policy/privacy_policy.dart';
+import 'settings/setting.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key, required this.loging});
@@ -160,7 +162,7 @@ class _MenuState extends State<Menu> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                     child: MyDoctors(),
                                     inheritTheme: true,
@@ -176,7 +178,7 @@ class _MenuState extends State<Menu> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                     child: AddMedicalReport(),
                                     inheritTheme: true,
@@ -194,7 +196,7 @@ class _MenuState extends State<Menu> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                     child: MedicineOrder(),
                                     inheritTheme: true,
@@ -210,7 +212,7 @@ class _MenuState extends State<Menu> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                     child: DiagonsticsTests(),
                                     inheritTheme: true,
@@ -226,7 +228,7 @@ class _MenuState extends State<Menu> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                     child: PatientDetails(),
                                     inheritTheme: true,
@@ -234,7 +236,21 @@ class _MenuState extends State<Menu> {
                               );
                             }),
                         Spacer(),
-                        DrawerRow(icon: Icons.safety_check_outlined, text: 'Privacy & Policy', on: () {}),
+                        DrawerRow(
+                            icon: Icons.safety_check_outlined,
+                            text: 'Privacy & Policy',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.easeIn,
+                                    child: PrivacyPolicy(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
                         Spacer(),
                         DrawerRow(
                             icon: Icons.help,
@@ -244,7 +260,7 @@ class _MenuState extends State<Menu> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                     child: HelpCenter(),
                                     inheritTheme: true,
@@ -252,7 +268,21 @@ class _MenuState extends State<Menu> {
                               );
                             }),
                         Spacer(),
-                        DrawerRow(icon: Icons.settings, text: 'Setting', on: () {}),
+                        DrawerRow(
+                            icon: Icons.settings,
+                            text: 'Setting',
+                            on: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.easeIn,
+                                    child: Setting(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            }),
                         Spacer(),
                       ],
                     ),
@@ -263,27 +293,77 @@ class _MenuState extends State<Menu> {
             Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.logout,
-                    color: white,
-                    size: 15.sp,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    "Logout",
-                    style: TextStyle(fontSize: 14.sp, fontFamily: 'Comfortaa-VariableFont_wght', color: white, fontWeight: FontWeight.bold),
-                  )
-                ],
+              child: InkWell(
+                onTap: () {
+                  logout();
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.logout,
+                      color: white,
+                      size: 15.sp,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "Logout",
+                      style: TextStyle(fontSize: 14.sp, fontFamily: 'Comfortaa-VariableFont_wght', color: white, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               ),
             ),
             Spacer(),
           ],
         ),
       ),
+    );
+  }
+
+  logout() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                "Cancel",
+                style: TextStyle(fontSize: 13.sp, fontFamily: 'Comfortaa-VariableFont_wght', color: font_green, fontWeight: FontWeight.bold),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                "ok",
+                style: TextStyle(fontSize: 13.sp, fontFamily: 'Comfortaa-VariableFont_wght', color: font_green, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+          content: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+            Text(
+              "Logout",
+              style: TextStyle(fontSize: 17.sp, fontFamily: 'Comfortaa-VariableFont_wght', color: black, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Are you sure want to logout?",
+              style: TextStyle(fontSize: 13.sp, fontFamily: 'Comfortaa-VariableFont_wght', color: font_color, fontWeight: FontWeight.bold),
+            )
+          ]),
+        );
+      },
     );
   }
 }

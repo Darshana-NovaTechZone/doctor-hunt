@@ -41,7 +41,10 @@ class _SelectTimeState extends State<SelectTime> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('Select Time'),
+        title: Text(
+          'Select Time',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: ArrowButton(
           onTap: () {
             Navigator.pop(context);

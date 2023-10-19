@@ -21,7 +21,10 @@ class _PopularDoctorsState extends State<PopularDoctors> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('Popular Doctors'),
+        title: Text(
+          'Popular Doctors',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
         leading: ArrowButton(
           onTap: () {

@@ -24,7 +24,10 @@ class _FindDoctorsState extends State<FindDoctors> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        title: Text('Find Doctors'),
+        title: Text(
+          'Find Doctors',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: ArrowButton(
           onTap: () {
             Navigator.pop(context);
